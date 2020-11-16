@@ -18,21 +18,13 @@ CREATE OR REPLACE TABLE author (
 
 ) ENGINE=InnoDB;
 
-CREATE OR REPLACE TABLE publisher (
-    pid INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    `name` varchar(100) NOT NULL
-    
-
-) ENGINE=InnoDB;
-
-CREATE OR REPLACE TABLE book (
+CREATE OR REPLACE TABLE books (
     `ISBN` char(13) PRIMARY KEY,
     `name` varchar(100) NOT NULL,
-    `year` INT UNSIGNED NOT NULL,
-    `pid` INT UNSIGNED,
+    `year` INT  NOT NULL,
     `aid` INT UNSIGNED,
-    CONSTRAINT `aid` FOREIGN KEY (aid) REFERENCES authors (aid) ON DELETE SET NULL
-    
+
+    CONSTRAINT `aid` FOREIGN KEY (aid) REFERENCES author (aid) ON DELETE CASCADE
     
 
 ) ENGINE=InnoDB;
